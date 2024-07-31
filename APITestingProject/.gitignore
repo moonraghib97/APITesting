@@ -7,6 +7,9 @@ target/
 !**/resources/
 !**/resources/*.properties
 
+# Ignore IntelliJ IDEA specific files
+.idea/
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
