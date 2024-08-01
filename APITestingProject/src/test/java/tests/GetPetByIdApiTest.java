@@ -9,33 +9,30 @@ import static org.hamcrest.Matchers.*;
 
 public class GetPetByIdApiTest {
 
+    private static String baseUri;
+    private static String petEndpoint;
 
-        private static String baseUri;
-        private static String petEndpoint;
+    @BeforeAll
+    public static void setup() {
+        baseUri = AppConfig.getBaseUri();
+        petEndpoint = AppConfig.getPetEndpoint();
 
-        @BeforeAll
-        public static void setup() {
-            baseUri = AppConfig.getBaseUri();
-            petEndpoint = AppConfig.getPetEndpoint();
+    }
 
-        }
+    @Test
+    public void testGetPetById() {
+        int petId = 10;
 
-        @Test
-        public void testGetPetById() {
-            int petId = 10;
+        Response response = RestAssured
+                .given()
+                .spec(Utils.getPetByIdRequestSpec(baseUri, petEndpoint, petId))
+                .when()
+                .get()
+                .then()
+                .statusCode(200)
+                .body("id", equalTo(petId))
+                .body("name", not(emptyOrNullString()))
+                .extract().response();
 
-            Response response = RestAssured
-                    .given()
-                    .spec(Utils.getPetByIdRequestSpec(baseUri, petEndpoint, petId))
-                    .when()
-                    .get()
-                    .then()
-                    .statusCode(200)
-                    .body("id", equalTo(petId))
-                    .body("name", not(emptyOrNullString()))
-                    .extract().response();
-
-        }
-
-
+    }
 }

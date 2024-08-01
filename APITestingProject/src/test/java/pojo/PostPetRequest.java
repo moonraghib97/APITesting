@@ -1,4 +1,4 @@
 package pojo;
 
-public record PostPetRequest() {
+public record PostPetRequest(String name, String status) {
 }
