@@ -1,6 +1,7 @@
 package pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.cucumber.messages.internal.com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TagsItem {
