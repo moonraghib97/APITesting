@@ -1,20 +1,33 @@
 package pojo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class TagsItem{
-
-	@JsonProperty("name")
+public class TagsItem {
+	private int id;
 	private String name;
 
-	@JsonProperty("id")
-	private int id;
+	// Default constructor
+	public TagsItem() {
+	}
 
-	public String getName(){
+	// Parameterized constructor
+	public TagsItem(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	// Getters and setters
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
 		return name;
 	}
 
-	public int getId(){
-		return id;
+	public void setName(String name) {
+		this.name = name;
 	}
 }
