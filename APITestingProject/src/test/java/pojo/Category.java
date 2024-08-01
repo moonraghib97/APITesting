@@ -1,5 +1,8 @@
 package pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Category {
 	private int id;
 	private String name;
