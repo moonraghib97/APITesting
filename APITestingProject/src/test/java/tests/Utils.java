@@ -29,7 +29,6 @@ public class Utils {
         return new RequestSpecBuilder()
                 .setBaseUri(baseUri)
                 .setBasePath(endpoint)
-                .addHeader("Content-Type", "application/json") // Ensure Content-Type header is set
                 .setBody(pet)
                 .setContentType(ContentType.JSON)
                 .build();
@@ -40,9 +39,7 @@ public class Utils {
                 .setBaseUri(baseUri)
                 .setBasePath(endpoint + "/{petId}")
                 .addPathParam("petId", petId)
-                .addHeader("Content-Type", "application/json") // Ensure Content-Type header is set
                 .setContentType(ContentType.JSON)
                 .build();
     }
-
 }
