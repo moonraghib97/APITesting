@@ -4,15 +4,12 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojo.Category;
 import pojo.Pet;
 import pojo.TagsItem;
-import tests.AppConfig;
-import tests.Utils;
 
 import java.util.Collections;
 
@@ -20,11 +17,12 @@ public class PostPetByIdTests {
     private static Response response;
     private static Pet pet;
     private static final String BASE_URI = AppConfig.getBaseUri();
+
     private static final String POST_PATH = AppConfig.getPetEndpoint();
     private static Integer petId;
 
     @BeforeAll
-    public static void beforeAll() {
+    public static void beforeAll()  {
         // Create a new pet
         Pet newPet = new Pet();
         newPet.setId(9999);
@@ -33,7 +31,6 @@ public class PostPetByIdTests {
         newPet.setPhotoUrls(Collections.singletonList("string"));
         newPet.setTags(Collections.singletonList(new TagsItem(0, "string")));
         newPet.setStatus("available");
-
         response = RestAssured
                 .given(Utils.postRequestSpecForPet(BASE_URI, POST_PATH, newPet))
                 .when()
